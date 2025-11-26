@@ -1,10 +1,10 @@
 <!doctype html >
-<html lang = "en" >
-<head >
-    <meta charset = "UTF-8" >
-    <meta name = "viewport" content = "width=device-width, initial-scale=1" >
-    <title > Home page </title >
-@vite(['resources/css/app.css', 'resources/js/app.js'])
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Home page </title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
@@ -48,7 +48,7 @@
                     </div>
                 </div>
             </div>
-{{--            To be added: Login and register buttons--}}
+            {{--            To be added: Login and register buttons--}}
         </div>
     </div>
 
