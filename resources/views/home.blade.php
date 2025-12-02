@@ -16,8 +16,8 @@
         </div>
 
     </div>
-    <div class="mt-10 mx-10 p-2 flex justify-between items-center mb-10">
-        <div>
+    <div class="mt-10 mx-15 p-2 flex justify-between items-center mb-10 rounded-md shadow-2xl">
+        <div class="ml-30">
             <h3 class="font-bold text-4xl text-orange-600 mb-4">Plan Your Paycheck</h3>
             <p class="text-sm max-w-lg font-bold">Don't wait for the kids to tell you that they took out money without you knowing, just for you to find out that your money for the month ran out</p>
         </div>
