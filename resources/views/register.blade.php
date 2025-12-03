@@ -8,7 +8,9 @@
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-            <form action="#" method="POST" class="space-y-6">
+            <form action="/register" method="POST" class="space-y-6">
+
+                @csrf
 
                 <x-form.form-field label="Name" name="username" type="text" />
 
