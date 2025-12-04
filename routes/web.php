@@ -6,8 +6,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
 
+Route::view('/dashboard', 'dashboard');
+
 Route::get('/register', [RegisteredUserController::class, 'index']);
 
 Route::get('/login', [SessionController::class, 'index']);
 
 Route::post('/register', [RegisteredUserController::class, 'store']);
+
