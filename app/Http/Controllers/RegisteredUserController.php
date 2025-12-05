@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 class RegisteredUserController extends Controller
 {
     public function index() {
-        return view('register');
+        return view('auth.register');
     }
 
     public function store(Request $request) {

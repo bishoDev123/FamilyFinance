@@ -8,7 +8,7 @@
         </div>
 
         <x-form.form method="POST">
-            <x-form.form-field label="Email" name="email" type="email"/>
+            <x-form.form-field label="Email" name="email" type="email" :value="old('email')"/>
 
             <x-form.form-field label="Password" name="password" type="password"/>
 

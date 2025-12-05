@@ -12,9 +12,9 @@
 
                 @csrf
 
-                <x-form.form-field label="Name" name="name" type="text" />
+                <x-form.form-field label="Name" name="name" type="text" :value="old('name')"/>
 
-                <x-form.form-field label="Email" name="email" type="email" />
+                <x-form.form-field label="Email" name="email" type="email" :value="old('email')"/>
 
                 <x-form.form-field label="Password" name="password" type="password" />
 
