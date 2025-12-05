@@ -12,7 +12,7 @@
 
                 @csrf
 
-                <x-form.form-field label="Name" name="username" type="text" />
+                <x-form.form-field label="Name" name="name" type="text" />
 
                 <x-form.form-field label="Email" name="email" type="email" />
 

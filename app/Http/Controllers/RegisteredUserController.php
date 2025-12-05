@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class RegisteredUserController extends Controller
 {
@@ -11,13 +13,16 @@ class RegisteredUserController extends Controller
     }
 
     public function store(Request $request) {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-            'email' => 'required',
-            'confirm_password' => 'required|same:password',
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'same:confirm_password'],
         ]);
 
-        dd($request->all());
+        $user = User::create($validated);
+
+        Auth::login($user);
+
+        return redirect('/dashboard');
     }
 }
