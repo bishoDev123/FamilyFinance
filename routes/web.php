@@ -9,7 +9,7 @@ Route::view('/', 'home');
 
 //Route::view('/dashboard', 'dashboard');
 
-Route::get('/dashboard', [PlanController::class, 'index']);
+Route::get('/dashboard', [PlanController::class, 'index'])->name('dashboard');
 
 Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('plans.show');
 

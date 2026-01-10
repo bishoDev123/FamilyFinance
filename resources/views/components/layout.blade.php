@@ -37,9 +37,9 @@
                 <div class="hidden sm:ml-6 sm:block">
                     <div class="flex space-x-4">
                         <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-white/5 hover:text-white" -->
-                        <a href="#" aria-current="page"
+                        <a href="/" aria-current="page"
                            class="rounded-md border border-b-gray-400 bg-orange-400/90 px-3 py-2 text-sm font-medium text-white">Home</a>
-                        <a href="#"
+                        <a href="{{ route('dashboard') }}"
                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Dashboard</a>
                         <a href="#"
                            class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-white/5 hover:text-white">Contact</a>
