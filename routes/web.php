@@ -9,8 +9,8 @@ Route::view('/', 'home');
 
 //Route::view('/dashboard', 'dashboard');
 
+// make sure the user only accesses certain pages under certain conditions
 Route::get('/dashboard', [PlanController::class, 'index'])->name('dashboard');
-
 Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('plans.show');
 
 Route::get('/register', [RegisteredUserController::class, 'index']);
@@ -18,5 +18,3 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'index']);
 Route::post('/login', [SessionController::class, 'store']);
-
-
