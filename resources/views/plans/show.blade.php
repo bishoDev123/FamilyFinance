@@ -5,7 +5,7 @@
                     <h1
                         class="text-6xl text-green-500 font-bold"
                         id="budget"
-                        data-target="23094857">
+                        data-target="{{ $plan->budget }}">
                         $0
                     </h1>
                 </div>

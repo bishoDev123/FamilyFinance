@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class PlanFactory extends Factory
             'title' => "Plan for $month",
             'description' => $this->faker->paragraph(),
             'budget' => $this->faker->numberBetween(1000, 10000),
+            'user_id' => User::factory(),
         ];
     }
 }
