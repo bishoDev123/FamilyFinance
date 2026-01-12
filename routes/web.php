@@ -7,14 +7,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'home');
 
-//Route::view('/dashboard', 'dashboard');
+Route::get('/dashboard', [PlanController::class, 'index'])
+    ->name('dashboard')
+    ->middleware('auth');
+Route::get('/plans/{plan}', [PlanController::class, 'show'])
+    ->name('plans.show')
+    ->middleware('auth');
 
-// make sure the user only accesses certain pages under certain conditions
-Route::get('/dashboard', [PlanController::class, 'index'])->name('dashboard');
-Route::get('/plans/{plan}', [PlanController::class, 'show'])->name('plans.show');
-
-Route::get('/register', [RegisteredUserController::class, 'index']);
+Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
 
-Route::get('/login', [SessionController::class, 'index']);
+Route::get('/login', [SessionController::class, 'index'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
