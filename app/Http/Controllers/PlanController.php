@@ -19,7 +19,7 @@ class PlanController extends Controller
     }
 
     public function create() {
-        // return the create plan page view
+        return view('plans.create');
     }
 
     public function store(Request $request) {
