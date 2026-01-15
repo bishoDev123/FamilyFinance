@@ -28,4 +28,6 @@ class SessionController extends Controller
 
         return redirect('/dashboard');
     }
+
+    // make a destroy session function to logout the user
 }
