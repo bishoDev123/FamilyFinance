@@ -4,7 +4,7 @@
             {{--Logo--}}
             <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company"
                  class="mx-auto h-10 w-auto"/>
-            <x-form.heading>Create a new account</x-form.heading>
+            <x-auth.heading>Create a new account</x-auth.heading>
         </div>
 
         <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
@@ -12,15 +12,15 @@
 
                 @csrf
 
-                <x-form.form-field label="Name" name="name" type="text" :value="old('name')"/>
+                <x-auth.form-field label="Name" name="name" type="text" :value="old('name')"/>
 
-                <x-form.form-field label="Email" name="email" type="email" :value="old('email')"/>
+                <x-auth.form-field label="Email" name="email" type="email" :value="old('email')"/>
 
-                <x-form.form-field label="Password" name="password" type="password" />
+                <x-auth.form-field label="Password" name="password" type="password" />
 
-                <x-form.form-field label="Confirm Password" name="confirm_password" type="password" />
+                <x-auth.form-field label="Confirm Password" name="confirm_password" type="password" />
 
-                <x-form.button>Create account</x-form.button>
+                <x-auth.button>Create account</x-auth.button>
 
             </form>
 
