@@ -19,6 +19,9 @@ Route::get('/plans/{plan}', [PlanController::class, 'show'])
     ->name('plans.show')
     ->middleware('auth');
 
+Route::post('/plans', [PlanController::class, 'store'])
+    ->name('plans.store')
+    ->middleware('auth');
 
 Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);
