@@ -27,9 +27,11 @@ class PlanPolicy
     /**
      * Determine whether the user can create models.
      */
-    public function create(User $user): bool
+    public function create(User $user): Response
     {
-        return $user->plans()->count() < 2;
+        return $user->plans()->count() < 2
+            ? Response::allow()
+            : Response::deny('You have reached the maximum number of plans.');
     }
 
     /**

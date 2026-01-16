@@ -23,7 +23,12 @@ class PlanController extends Controller
     }
 
     public function store(Request $request) {
-        Gate::authorize('create', Plan::class);
+        $response = Gate::inspect('create', Plan::class);
+
+        if ($response->denied()) {
+            return back()->with('error', $response->message());
+        }
+
         $request->validate([
            'title' => ['required', 'string', 'max:255'],
            'description' => ['required', 'string', 'max:255'],
