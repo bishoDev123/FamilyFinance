@@ -6,7 +6,7 @@
                 @csrf
                 <x-form.input name="title" label="Title" placeholder="plans for august" />
                 <x-form.textarea name="description" label="Description" placeholder="Plans starting from august 23rd" />
-                <x-form.input name="Budget" label="Starting budget" placeholder="100000" />
+                <x-form.input name="budget" label="Starting budget" placeholder="100000" />
 
                 <div class="flex items-center justify-center">
                     <button class="bg-orange-400 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
