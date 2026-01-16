@@ -23,21 +23,17 @@ class PlanController extends Controller
     }
 
     public function store(Request $request) {
-        // only authorize the user to create a plan if they have less than 6 of them
         Gate::authorize('create', Plan::class);
-        // validate the request parameters
         $request->validate([
            'title' => ['required', 'string', 'max:255'],
            'description' => ['required', 'string', 'max:255'],
            'budget' => ['required', 'integer', 'min:1'],
         ]);
-        // create a database record with the request parameters and the id of the currently logged in user
         $request->user()->plans()->create([
             'title' => $request->title,
             'description' => $request->description,
             'budget' => $request->budget,
         ]);
-        // redirect to the dashboard
         return redirect()->route('dashboard');
     }
 

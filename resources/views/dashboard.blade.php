@@ -1,5 +1,8 @@
 <x-layout>
     <x-section header="Your Finance plans">
+        <div class="flex">
+            <a class="rounded-lg border border-black text-black ml-auto mb-6 px-2 py-1 font-bold hover:text-white hover:bg-black hover:border-white transition duration-200" href="{{ route('plans.create') }}">+ Create</a>
+        </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             @foreach($plans as $plan)
                 <x-plan-card :plan="$plan"/>
