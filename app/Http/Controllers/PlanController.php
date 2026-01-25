@@ -44,6 +44,7 @@ class PlanController extends Controller
 
     public function edit(Plan $plan) {
         // only authorize the user to go the edit view of a certain page if they own the plan (UX)
+        return "Hello world";
     }
 
     public function update(Request $request, Plan $plan) {

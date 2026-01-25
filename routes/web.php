@@ -15,6 +15,10 @@ Route::get('/plans/create', [PlanController::class, 'create'])
     ->name('plans.create')
     ->middleware('auth');
 
+Route::get('/plans/{plan}/edit', [PlanController::class, 'edit'])
+    ->name('plans.edit')
+    ->middleware('auth');
+
 Route::get('/plans/{plan}', [PlanController::class, 'show'])
     ->name('plans.show')
     ->middleware('auth');

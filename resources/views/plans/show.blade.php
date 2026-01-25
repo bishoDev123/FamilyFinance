@@ -10,6 +10,9 @@
                     </h1>
                 </div>
             </div>
+            <div class="flex justify-end">
+                <x-menu :plan="$plan"></x-menu>
+            </div>
         </x-section>
         <x-section header="Recent Activities"></x-section>
     <div class="min-h-screen bg-gray-100"></div>
