@@ -39,7 +39,7 @@ class PlanPolicy
      */
     public function update(User $user, Plan $plan): bool
     {
-        return false;
+        return $plan->user_id === $user->id;
     }
 
     /**

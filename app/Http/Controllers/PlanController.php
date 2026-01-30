@@ -43,15 +43,24 @@ class PlanController extends Controller
     }
 
     public function edit(Plan $plan) {
-        // only authorize the user to go the edit view of a certain page if they own the plan (UX)
-        return "Hello world";
+        return view('plans.edit', ['plan' => $plan]);
     }
 
     public function update(Request $request, Plan $plan) {
-        // authorize the user to send this post request only if they own the plan (security)
-        // validate the request
-        // update plan in question with the request parameters
-        // redirect to show page
+        Gate::authorize('update', $plan);
+
+        $request->validate([
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'budget' => ['required', 'integer', 'min:1'],
+        ]);
+
+        $plan->update([
+            'title' => $request->title,
+            'description' => $request->description,
+            'budget' => $request->budget,
+        ]);
+        return redirect()->route('dashboard');
     }
 
     public function destroy(Plan $plan) {

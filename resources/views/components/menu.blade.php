@@ -13,18 +13,15 @@
     <el-menu anchor="bottom end" popover class="w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
         <div class="py-1">
             <a href="{{ route('plans.edit', $plan) }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Edit</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Duplicate</a>
         </div>
         <div class="py-1">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Archive</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Move</a>
         </div>
         <div class="py-1">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Share</a>
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Add to favorites</a>
         </div>
         <div class="py-1">
-            <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Delete</a>
+            <a href="#" class="block px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-hidden">Delete</a>
         </div>
     </el-menu>
 </el-dropdown>
