@@ -23,7 +23,7 @@ Route::get('/plans/{plan}', [PlanController::class, 'show'])
     ->name('plans.show')
     ->middleware('auth');
 
-Route::post('/plans/{plan}', [PlanController::class, 'update'])
+Route::put('/plans/{plan}', [PlanController::class, 'update'])
     ->name('plans.update')
 ->middleware('auth');
 
