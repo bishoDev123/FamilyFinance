@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdatePlanRequest;
 use App\Models\Plan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
@@ -46,20 +47,9 @@ class PlanController extends Controller
         return view('plans.edit', ['plan' => $plan]);
     }
 
-    public function update(Request $request, Plan $plan) {
-        Gate::authorize('update', $plan);
+    public function update(UpdatePlanRequest $request, Plan $plan) {
+        $plan->update($request->validated());
 
-        $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
-            'budget' => ['required', 'integer', 'min:1'],
-        ]);
-
-        $plan->update([
-            'title' => $request->title,
-            'description' => $request->description,
-            'budget' => $request->budget,
-        ]);
         return redirect()->route('dashboard');
     }
 

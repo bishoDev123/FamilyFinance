@@ -11,7 +11,9 @@ class UpdatePlanRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        $plan = $this->route('plan');
+
+        return $this->user()->can('update', $plan);
     }
 
     /**
@@ -22,7 +24,9 @@ class UpdatePlanRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:255'],
+            'budget' => ['required', 'integer', 'min:1'],
         ];
     }
 }
