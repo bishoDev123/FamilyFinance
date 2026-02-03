@@ -4,9 +4,12 @@
         <div class="w-full max-w-xs">
             <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" method="post" action="/plans">
                 @csrf
-                <x-form.input name="title" label="Title" placeholder="plans for august"/>
-                <x-form.textarea name="description" label="Description" placeholder="Plans starting from august 23rd"/>
-                <x-form.input name="budget" label="Starting budget" placeholder="100000" type="number"/>
+                <x-form.input name="title" label="Title" placeholder="plans for august" :value="old('title')"/>
+                <x-form.textarea name="description" label="Description" placeholder="Plans starting from august 23rd"
+                                 :value="old('description')"/>
+
+                <x-form.input name="budget" label="Starting budget" placeholder="100000" type="number"
+                              :value="old('budget')"/>
 
                 <div class="flex items-center justify-center">
                     <button
