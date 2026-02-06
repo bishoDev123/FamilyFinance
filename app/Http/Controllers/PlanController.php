@@ -41,7 +41,7 @@ class PlanController extends Controller
             'description' => $request->description,
             'budget' => $request->budget,
         ]);
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Plan created successfully.');
     }
 
     public function edit(Plan $plan) {
@@ -51,13 +51,11 @@ class PlanController extends Controller
     public function update(UpdatePlanRequest $request, Plan $plan) {
         $plan->update($request->validated());
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Plan updated successfully.');
     }
 
     public function destroy(Plan $plan, DeletePlanRequest $request) {
-        // delete the record of this plan from the database
         $plan->delete();
-        // redirect to dashboard
         return redirect()->route('dashboard')->with('success', 'Plan deleted successfully');
     }
 }
