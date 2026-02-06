@@ -25,7 +25,7 @@ Route::get('/plans/{plan}', [PlanController::class, 'show'])
 
 Route::put('/plans/{plan}', [PlanController::class, 'update'])
     ->name('plans.update')
-->middleware('auth');
+    ->middleware('auth');
 
 Route::delete('/plans/{plan}', [PlanController::class, 'destroy'])
     ->name('plans.destroy')
@@ -40,3 +40,4 @@ Route::post('/register', [RegisteredUserController::class, 'store']);
 
 Route::get('/login', [SessionController::class, 'index'])->name('login');
 Route::post('/login', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy'])->name('logout')->middleware('auth');

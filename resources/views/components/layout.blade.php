@@ -49,7 +49,17 @@
                     </div>
                 </div>
             </div>
-            {{--            To be added: Login and register buttons--}}
+            <div class="">
+                @auth()
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
+                        <button type="submit"
+                                class="rounded-md border border-b-gray-400 bg-red-600 text-white px-3 py-2 text-sm font-medium cursor-pointer hover:bg-transparent transition duration-300">
+                            Logout
+                        </button>
+                    </form>
+                @endauth
+            </div>
         </div>
     </div>
 
