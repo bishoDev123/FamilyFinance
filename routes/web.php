@@ -27,6 +27,10 @@ Route::put('/plans/{plan}', [PlanController::class, 'update'])
     ->name('plans.update')
 ->middleware('auth');
 
+Route::delete('/plans/{plan}', [PlanController::class, 'destroy'])
+    ->name('plans.destroy')
+    ->middleware('auth');
+
 Route::post('/plans', [PlanController::class, 'store'])
     ->name('plans.store')
     ->middleware('auth');

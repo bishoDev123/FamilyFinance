@@ -47,7 +47,7 @@ class PlanPolicy
      */
     public function delete(User $user, Plan $plan): bool
     {
-        return false;
+        return $plan->user_id === $user->id;
     }
 
     /**

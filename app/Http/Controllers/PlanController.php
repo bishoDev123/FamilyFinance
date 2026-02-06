@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeletePlanRequest;
 use App\Http\Requests\UpdatePlanRequest;
 use App\Models\Plan;
 use Illuminate\Http\Request;
@@ -53,9 +54,10 @@ class PlanController extends Controller
         return redirect()->route('dashboard');
     }
 
-    public function destroy(Plan $plan) {
-        // authorize the user to delete the plan only if they own it
+    public function destroy(Plan $plan, DeletePlanRequest $request) {
         // delete the record of this plan from the database
+        $plan->delete();
         // redirect to dashboard
+        return redirect()->route('dashboard')->with('success', 'Plan deleted successfully');
     }
 }

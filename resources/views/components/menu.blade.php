@@ -21,7 +21,15 @@
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Share</a>
         </div>
         <div class="py-1">
-            <a href="#" class="block px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-hidden">Delete</a>
+            <form action="{{ route('plans.destroy', $plan) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit"
+                        class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none"
+                        onclick="return confirm('Are you sure you want to delete this?')">
+                    Delete
+                </button>
+            </form>
         </div>
     </el-menu>
 </el-dropdown>
