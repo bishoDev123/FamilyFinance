@@ -54,7 +54,7 @@ class PlanController extends Controller
         return redirect()->route('dashboard')->with('success', 'Plan updated successfully.');
     }
 
-    public function destroy(Plan $plan, DeletePlanRequest $request) {
+    public function destroy(DeletePlanRequest $request, Plan $plan) {
         $plan->delete();
         return redirect()->route('dashboard')->with('success', 'Plan deleted successfully');
     }
