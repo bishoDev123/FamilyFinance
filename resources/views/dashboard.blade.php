@@ -1,6 +1,14 @@
 <x-layout>
     @if(session('success'))
-        <div class="mb-4 rounded bg-green-100 px-4 py-2 text-green-800">
+        <div
+            id="flash-message"
+            class="mb-4 overflow-hidden rounded bg-green-100 px-4 py-2 text-green-800"
+            style="transition:
+            height 300ms ease,
+            opacity 300ms ease,
+            margin 300ms ease,
+            padding 300ms ease;"
+        >
             {{ session('success') }}
         </div>
     @endif
@@ -19,5 +27,6 @@
         <li>withdrawl: 950 EGP</li>
         <li>deposit: 1000 EGP</li>
     </x-section>
+        <script src="{{ asset('js/flashSuccess.js') }}"></script>
 </x-layout>
 
