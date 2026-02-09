@@ -11,7 +11,11 @@ use Illuminate\Support\Facades\Gate;
 class PlanController extends Controller
 {
     public function index(Request $request) {
-        $plans = $request->user()->plans;
+        $ownedPlans = $request->user()->ownedPlans;
+        $memberPlans = $request->user()->memberPlans;
+
+        $plans = $ownedPlans->merge($memberPlans)->unique('id');
+
         return view('dashboard', ['plans' => $plans]);
     }
 
