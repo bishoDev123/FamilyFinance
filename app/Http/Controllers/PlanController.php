@@ -16,7 +16,10 @@ class PlanController extends Controller
 
         $plans = $ownedPlans->merge($memberPlans)->unique('id');
 
-        return view('dashboard', ['plans' => $plans]);
+        $ownedIds = $ownedPlans->pluck('id')->toArray();
+        $memberIds = $memberPlans->pluck('id')->toArray();
+
+        return view('dashboard', ['plans' => $plans, 'ownedIds' => $ownedIds, 'memberIds' => $memberIds]);
     }
 
     public function show(Plan $plan) {
