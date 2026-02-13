@@ -43,7 +43,7 @@ class PlanController extends Controller
            'description' => ['required', 'string', 'max:255'],
            'budget' => ['required', 'integer', 'min:1'],
         ]);
-        $request->user()->plans()->create([
+        $request->user()->ownedPlans()->create([
             'title' => $request->title,
             'description' => $request->description,
             'budget' => $request->budget,
