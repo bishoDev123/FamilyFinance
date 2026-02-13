@@ -14,7 +14,7 @@ class DeletePlanRequest extends FormRequest
     {
         $plan = $this->route('plan');
 
-        return $this->user()->can('update', $plan);
+        return $this->user()->can('delete', $plan);
     }
 
     /**
