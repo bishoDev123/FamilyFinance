@@ -21,7 +21,7 @@ class PlanPolicy
      */
     public function view(User $user, Plan $plan): bool
     {
-        return $plan->owner_id === $user->id || $plan->members()->contains($user);
+        return $plan->owner_id === $user->id || $plan->members->contains($user);
     }
 
     /**
