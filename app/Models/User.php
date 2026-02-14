@@ -55,4 +55,8 @@ class User extends Authenticatable
     public function memberPlans() : BelongsToMany {
         return $this->belongsToMany(Plan::class, 'plan_user')->withTimestamps();
     }
+
+    public function Transactions() : HasMany {
+        return $this->hasMany(Transaction::class);
+    }
 }

@@ -28,4 +28,8 @@ class Plan extends Model
         return $this->BelongsToMany(User::class, 'plan_user')
             ->withTimestamps();
     }
+
+    public function transactions() : HasMany {
+        return $this->hasMany(Transaction::class);
+    }
 }
