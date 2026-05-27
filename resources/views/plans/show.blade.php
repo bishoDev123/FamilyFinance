@@ -21,7 +21,7 @@
 
             <button
                 onclick="openModal()"
-                class="rounded-lg border border-green-600 text-green-600 px-3 py-1 font-bold hover:text-white hover:bg-green-600 transition duration-200">
+                class="rounded-lg border border-orange-600 text-orange-600 px-3 py-1 font-bold hover:text-white hover:bg-orange-600 transition duration-200 cursor-pointer">
                 + Add Transaction
             </button>
 
@@ -42,15 +42,17 @@
     {{-- TRANSACTION MODAL --}}
     <div
         id="transactionModal"
-        class="fixed inset-0 bg-black/50 flex justify-center items-center z-50 hidden"
+        class="fixed inset-0 bg-black/50 flex justify-center items-center z-50
+        opacity-0 pointer-events-none transition-opacity duration-300"
     >
 
-        <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 relative w-full max-w-md">
+        <div id='modalContent' class="bg-white shadow-md rounded px-8 pt-6 pb-8 relative w-full max-w-md
+        transform scale-95 transition-transform duration-300">
 
             {{-- Close button --}}
             <button
                 onclick="closeModal()"
-                class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl">
+                class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl cursor-pointer">
                 ×
             </button>
 
@@ -146,15 +148,27 @@
 
     {{-- Modal Script --}}
     <script>
+        const modal = document.getElementById('transactionModal');
+        const modalContent = document.getElementById('modalContent');
 
-        function openModal()
-        {
-            document.getElementById('transactionModal').classList.remove('hidden');
+        const noOpacity = 'opacity-0';
+        const noInteraction = 'pointer-events-none';
+
+        const closedSize = 'scale-95';
+        const openedSize = 'scale-100';
+
+        function openModal() {
+            modal.classList.remove(noOpacity, noInteraction);
+
+            modalContent.classList.remove(closedSize);
+            modalContent.classList.add(openedSize)
         }
 
-        function closeModal()
-        {
-            document.getElementById('transactionModal').classList.add('hidden');
+        function closeModal() {
+            modal.classList.add(noOpacity, noInteraction);
+
+            modalContent.classList.remove(openedSize);
+            modalContent.classList.add(closedSize);
         }
 
         // reopen if validation fails
