@@ -63,7 +63,7 @@
 
 
             <form method="POST"
-                  action="#">
+                  action="{{ route('transaction', $plan) }}">
 
                 @csrf
 
@@ -119,7 +119,7 @@
 
                     <button
                         type="submit"
-                        class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
+                        class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
                         Add
                     </button>
 
