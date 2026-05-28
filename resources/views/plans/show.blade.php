@@ -82,7 +82,7 @@
                     name="amount"
                     label="Amount"
                     type="number"
-                    step="0.01"
+                    step="1"
                     placeholder="500"
                     :value="old('amount')"
                 />

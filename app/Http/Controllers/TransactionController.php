@@ -19,24 +19,21 @@ class TransactionController extends Controller
             return back()->with('error', $response->message());
         }
 
-        return 'hello world';
+        $plan->transactions()->create([
+            'user_id' => $request->user()->id,
+            'amount' => $request->amount,
+            'description' => $request->description,
+            'type' => $request->type,
+        ]);
 
-//        // Example logic:
-//        // Prevent overspending
-//
-//        if ($request->type === 'expense' &&
-//            $request->amount > $plan->remaining_budget) {
-//
-//            return back()->with('error', 'Not enough remaining budget.');
-//        }
-//
-//        $plan->transactions()->create([
-//            'user_id' => $request->user()->id,
-//            'title' => $request->title,
-//            'amount' => $request->amount,
-//            'type' => $request->type,
-//            'description' => $request->description,
-//        ]);
-//
+        if ($request->type === 'withdraw') {
+            $plan->budget -= $request->amount;
+        } elseif ($request->type === 'deposit') {
+            $plan->budget += $request->amount;
+        }
+
+        $plan->save();
+
+        return back()->with('success', 'Transaction created successfully.');
     }
 }
