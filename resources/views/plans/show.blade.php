@@ -31,10 +31,19 @@
 
     </x-section>
 
-
+<div class=""></div>
 
     <x-section header="Recent Activities">
-        {{-- transactions list goes here later --}}
+        <ul>
+        @foreach($plan->transactions as $transaction)
+                <li>{{ $transaction->description }}:
+                    @if($transaction->type == 'deposit')
+                        +<span class="text-green-500">{{$transaction->amount}}$</span>
+                    @else
+                        -<span class="text-red-500">{{$transaction->amount}}$</span>
+                    @endif</li>
+        @endforeach
+        </ul>
     </x-section>
 
 

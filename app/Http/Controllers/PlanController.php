@@ -24,6 +24,7 @@ class PlanController extends Controller
 
     public function show(Plan $plan) {
         Gate::authorize('view', $plan);
+        $plan->load('transactions');
         return view('plans.show', ['plan' => $plan]);
     }
 
