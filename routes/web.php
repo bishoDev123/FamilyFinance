@@ -16,6 +16,9 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
 
+    Route::get('/plans/{plan}/transactions', [TransactionController::class, 'index'])
+        ->name('plans.transactions.index');
+
     Route::post('/plans/{plan}/transaction', [TransactionController::class, 'store'])
         ->name('transaction');
 });

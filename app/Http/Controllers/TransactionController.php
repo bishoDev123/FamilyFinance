@@ -36,4 +36,11 @@ class TransactionController extends Controller
 
         return back()->with('success', 'Transaction created successfully.');
     }
+
+    public function index(Plan $plan)
+    {
+        return view('transactions.index', [
+            'transactions' => $plan->transactions,
+        ]);
+    }
 }

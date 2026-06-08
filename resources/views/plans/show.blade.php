@@ -35,14 +35,23 @@
 
     <x-section header="Recent Activities">
         <ul>
-        @foreach($plan->transactions as $transaction)
-                <li>{{ $transaction->description }}:
-                    @if($transaction->type == 'deposit')
-                        +<span class="text-green-500">{{$transaction->amount}}$</span>
-                    @else
-                        -<span class="text-red-500">{{$transaction->amount}}$</span>
-                    @endif</li>
-        @endforeach
+            @if($plan->transactions->isNotEmpty())
+                @foreach($plan->transactions->take(3) as $transaction)
+                    <li>{{ $transaction->description }}:
+                        @if($transaction->type == 'deposit')
+                            +<span class="text-green-500">{{$transaction->amount}}$</span>
+                        @else
+                            -<span class="text-red-500">{{$transaction->amount}}$</span>
+                        @endif</li>
+                @endforeach
+                @if($plan->transactions->count() > 3)
+                    <li class="mt-4">
+                        <a href="{{route('plans.transactions.index', $plan)}}" class="text-blue-500 font-bold text-xl">[View All Transactions]</a>
+                    </li>
+                @endif
+            @else
+                <div>No transactions have been made yet</div>
+            @endif
         </ul>
     </x-section>
 
