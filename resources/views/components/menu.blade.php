@@ -1,4 +1,8 @@
-@props(['plan'])
+@props(['model'])
+
+@php
+    $modelName = Str::plural(Str::snake(class_basename($model)));
+@endphp
 
 <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
@@ -12,7 +16,7 @@
 
     <el-menu anchor="bottom end" popover class="w-56 origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg outline-1 outline-black/5 transition transition-discrete [--anchor-gap:--spacing(2)] data-closed:scale-95 data-closed:transform data-closed:opacity-0 data-enter:duration-100 data-enter:ease-out data-leave:duration-75 data-leave:ease-in">
         <div class="py-1">
-            <a href="{{ route('plans.edit', $plan) }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Edit</a>
+            <a href="{{ route("$modelName.edit", $model) }}" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Edit</a>
         </div>
         <div class="py-1">
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Archive</a>
@@ -21,11 +25,11 @@
             <a href="#" class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Share</a>
         </div>
         <div class="py-1">
-            <form action="{{ route('plans.destroy', $plan) }}" method="POST">
+            <form action="{{ route("$modelName.destroy", $model) }}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit"
-                        class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none"
+                        class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none cursor-pointer"
                         onclick="return confirm('Are you sure you want to delete this?')">
                     Delete
                 </button>

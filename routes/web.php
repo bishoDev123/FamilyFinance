@@ -14,13 +14,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('plans', PlanController::class)
         ->except(['index']);
 
+    Route::resource('plans.transactions', TransactionController::class)
+        ->except(['show'])
+        ->shallow();
+
     Route::post('/logout', [SessionController::class, 'destroy'])->name('logout');
-
-    Route::get('/plans/{plan}/transactions', [TransactionController::class, 'index'])
-        ->name('plans.transactions.index');
-
-    Route::post('/plans/{plan}/transaction', [TransactionController::class, 'store'])
-        ->name('transaction');
 });
 Route::get('/register', [RegisteredUserController::class, 'index'])->name('register');
 Route::post('/register', [RegisteredUserController::class, 'store']);

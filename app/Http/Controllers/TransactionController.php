@@ -43,4 +43,12 @@ class TransactionController extends Controller
             'transactions' => $plan->transactions,
         ]);
     }
+
+    public function edit(Plan $plan) {
+        return 'hello world';
+    }
+
+    public function destroy(Plan $plan) {
+        return 'hello world';
+    }
 }

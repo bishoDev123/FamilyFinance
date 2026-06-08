@@ -25,7 +25,7 @@
                 + Add Transaction
             </button>
 
-            <x-menu :plan="$plan"></x-menu>
+            <x-menu :model="$plan"></x-menu>
 
         </div>
 
@@ -81,7 +81,7 @@
 
 
             <form method="POST"
-                  action="{{ route('transaction', $plan) }}">
+                  action="{{ route('plans.transactions.store', $plan) }}">
 
                 @csrf
 
