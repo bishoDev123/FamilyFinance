@@ -40,15 +40,19 @@ class TransactionController extends Controller
     public function index(Plan $plan)
     {
         return view('transactions.index', [
-            'transactions' => $plan->transactions,
+            'transactions' => $plan->transactions()
+                ->latest()
+                ->paginate(15),
         ]);
     }
 
-    public function edit(Plan $plan) {
+    public function edit(Plan $plan)
+    {
         return 'hello world';
     }
 
-    public function destroy(Plan $plan) {
+    public function destroy(Plan $plan)
+    {
         return 'hello world';
     }
 }
