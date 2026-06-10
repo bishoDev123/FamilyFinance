@@ -1,3 +1,4 @@
+
 <x-layout>
 
     <x-section header="Current Budget">
@@ -79,84 +80,16 @@
                 Add Transaction
             </h1>
 
+    <x-transaction.form
+        :action="route('plans.transactions.store', $plan)"
+        button-text="Add"
+    />
 
-            <form method="POST"
-                  action="{{ route('plans.transactions.store', $plan) }}">
-
-                @csrf
-
-
-                {{-- Description --}}
-                <x-form.input
-                    name="description"
-                    label="Description"
-                    placeholder="Bought groceries"
-                    :value="old('description')"
-                />
-
-
-                {{-- Amount --}}
-                <x-form.input
-                    name="amount"
-                    label="Amount"
-                    type="number"
-                    step="1"
-                    placeholder="500"
-                    :value="old('amount')"
-                />
-
-
-                {{-- Type --}}
-                <div class="mb-4">
-
-                    <label class="block text-gray-700 text-sm font-bold mb-2">
-                        Type
-                    </label>
-
-                    <select name="type"
-                            class="shadow border rounded w-full py-2 px-3 text-gray-700">
-
-                        <option value="deposit">Deposit</option>
-                        <option value="withdraw">Withdraw</option>
-
-                    </select>
-
-                </div>
-
-
-
-                <div class="flex justify-center gap-3">
-
-                    <button
-                        type="button"
-                        onclick="closeModal('transactionModal')"
-                        class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
-                        Cancel
-                    </button>
-
-
-                    <button
-                        type="submit"
-                        class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-                        Add
-                    </button>
-
-                </div>
-
-
-                @if ($errors->any())
-                    <div class="bg-red-100 border border-red-500 text-red-800 p-3 rounded mt-4">
-                        {{ $errors->first() }}
-                    </div>
-                @endif
-
-
-            </form>
 
         </div>
 
     </div>
-
+{{-- End of Transaction Modal--}}
 
 
     <div class="min-h-screen bg-gray-100"></div>
