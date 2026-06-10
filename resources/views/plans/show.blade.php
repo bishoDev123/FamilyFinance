@@ -1,4 +1,3 @@
-
 <x-layout>
 
     <x-section header="Current Budget">
@@ -32,7 +31,7 @@
 
     </x-section>
 
-<div class=""></div>
+    <div class=""></div>
 
     <x-section header="Recent Activities">
         <ul>
@@ -47,7 +46,8 @@
                 @endforeach
                 @if($plan->transactions->count() > 3)
                     <li class="mt-4">
-                        <a href="{{route('plans.transactions.index', $plan)}}" class="text-blue-500 font-bold text-xl">[View All Transactions]</a>
+                        <a href="{{route('plans.transactions.index', $plan)}}" class="text-blue-500 font-bold text-xl">[View
+                            All Transactions]</a>
                     </li>
                 @endif
             @else
@@ -55,7 +55,6 @@
             @endif
         </ul>
     </x-section>
-
 
 
     {{-- TRANSACTION MODAL --}}
@@ -80,16 +79,15 @@
                 Add Transaction
             </h1>
 
-    <x-transaction.form
-        :action="route('plans.transactions.store', $plan)"
-        button-text="Add"
-    />
-
+            <x-transaction.form
+                :action="route('plans.transactions.store', $plan)"
+                button-text="Add"
+            />
 
         </div>
 
     </div>
-{{-- End of Transaction Modal--}}
+    {{-- End of Transaction Modal--}}
 
 
     <div class="min-h-screen bg-gray-100"></div>
@@ -103,7 +101,7 @@
     @if($errors->any())
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-               openModal('transactionModal');
+                openModal('transactionModal');
             });
         </script>
     @endif

@@ -27,7 +27,7 @@
                             <td class="px-6 py-4 text-sm font-medium text-green-500 text-left">{{ $transaction->type }}</td>
                         @endif
                         <td class="px-6 py-4">
-                            <x-menu :model="$transaction"></x-menu>
+                            <x-menu :model="$transaction" :is-edit="true"></x-menu>
                         </td>
                     </tr>
                 @endforeach
