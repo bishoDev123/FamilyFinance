@@ -46,9 +46,8 @@ class TransactionController extends Controller
         ]);
     }
 
-    public function edit(Plan $plan)
-    {
-        return 'hello world';
+    public function update(Transaction $transaction) {
+        return $transaction->id;
     }
 
     public function destroy(Transaction $transaction)

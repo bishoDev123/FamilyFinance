@@ -27,6 +27,14 @@
                             <td class="px-6 py-4 text-sm font-medium text-green-500 text-left">{{ $transaction->type }}</td>
                         @endif
                         <td class="px-6 py-4">
+                            <x-transaction.modal>
+                                <x-transaction.form
+                                :action="route('transactions.update', $transaction)"
+                                method="PUT"
+                                :transaction="$transaction"
+                                button-text="Save"
+                                />
+                            </x-transaction.modal>
                             <x-menu :model="$transaction" :is-edit="true"></x-menu>
                         </td>
                     </tr>
@@ -38,4 +46,14 @@
             </div>
         </div>
     </x-section>
+    {{-- Modal Script --}}
+    <script src="{{ asset('js/modal.js') }}"></script>
+
+    @if($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                openModal('transactionModal');
+            });
+        </script>
+    @endif
 </x-layout>
