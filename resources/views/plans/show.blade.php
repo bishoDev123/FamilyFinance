@@ -20,7 +20,7 @@
         <div class="flex justify-end gap-2">
 
             <button
-                onclick="openModal()"
+                onclick="openModal('transactionModal')"
                 class="rounded-lg border border-orange-600 text-orange-600 px-3 py-1 font-bold hover:text-white hover:bg-orange-600 transition duration-200 cursor-pointer">
                 + Add Transaction
             </button>
@@ -69,7 +69,7 @@
 
             {{-- Close button --}}
             <button
-                onclick="closeModal()"
+                onclick="closeModal('transactionModal')"
                 class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl cursor-pointer">
                 ×
             </button>
@@ -129,7 +129,7 @@
 
                     <button
                         type="button"
-                        onclick="closeModal()"
+                        onclick="closeModal('transactionModal')"
                         class="bg-gray-400 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded">
                         Cancel
                     </button>
@@ -165,36 +165,15 @@
 
 
     {{-- Modal Script --}}
-    <script>
-        const modal = document.getElementById('transactionModal');
-        const modalContent = document.getElementById('modalContent');
+    <script src="{{ asset('js/modal.js') }}"></script>
 
-        const noOpacity = 'opacity-0';
-        const noInteraction = 'pointer-events-none';
-
-        const closedSize = 'scale-95';
-        const openedSize = 'scale-100';
-
-        function openModal() {
-            modal.classList.remove(noOpacity, noInteraction);
-
-            modalContent.classList.remove(closedSize);
-            modalContent.classList.add(openedSize)
-        }
-
-        function closeModal() {
-            modal.classList.add(noOpacity, noInteraction);
-
-            modalContent.classList.remove(openedSize);
-            modalContent.classList.add(closedSize);
-        }
-
-        // reopen if validation fails
-        @if ($errors->any())
-        openModal();
-        @endif
-
-    </script>
+    @if($errors->any())
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+               openModal('transactionModal');
+            });
+        </script>
+    @endif
 
 
 </x-layout>

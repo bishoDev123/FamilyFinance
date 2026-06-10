@@ -42,7 +42,7 @@ class TransactionController extends Controller
         return view('transactions.index', [
             'transactions' => $plan->transactions()
                 ->latest()
-                ->paginate(15),
+                ->paginate(10),
         ]);
     }
 
@@ -51,8 +51,8 @@ class TransactionController extends Controller
         return 'hello world';
     }
 
-    public function destroy(Plan $plan)
+    public function destroy(Transaction $transaction)
     {
-        return 'hello world';
+        return "Can delete Transaction number $transaction->id";
     }
 }
