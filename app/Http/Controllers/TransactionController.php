@@ -43,6 +43,7 @@ class TransactionController extends Controller
         return view('transactions.index', [
             'plan' => $plan,
             'transactions' => $plan->transactions()
+                ->with('user')
                 ->latest()
                 ->paginate(10),
         ]);
