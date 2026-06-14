@@ -40,6 +40,7 @@ class TransactionController extends Controller
     public function index(Plan $plan)
     {
         return view('transactions.index', [
+            'plan' => $plan,
             'transactions' => $plan->transactions()
                 ->latest()
                 ->paginate(10),

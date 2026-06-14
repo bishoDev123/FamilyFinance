@@ -26,17 +26,21 @@
                         @elseif($transaction->type == 'deposit')
                             <td class="px-6 py-4 text-sm font-medium text-green-500 text-left">{{ $transaction->type }}</td>
                         @endif
-                        <td class="px-6 py-4">
-                            <x-transaction.modal>
-                                <x-transaction.form
-                                :action="route('transactions.update', $transaction)"
-                                method="PUT"
-                                :transaction="$transaction"
-                                button-text="Save"
-                                />
-                            </x-transaction.modal>
-                            <x-menu :model="$transaction" :is-edit="true"></x-menu>
-                        </td>
+                        @if(auth()->id() === $plan->owner_id)
+                            <td class="px-6 py-4">
+                                <x-transaction.modal>
+                                    <x-transaction.form
+                                        :action="route('transactions.update', $transaction)"
+                                        method="PUT"
+                                        :transaction="$transaction"
+                                        button-text="Save"
+                                    />
+                                </x-transaction.modal>
+                                <x-menu :model="$transaction" :is-edit="true"></x-menu>
+                            </td>
+                        @else
+                            <td class="px-6 py-4">-</td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>

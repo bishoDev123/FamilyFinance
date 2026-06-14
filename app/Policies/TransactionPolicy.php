@@ -39,7 +39,7 @@ class TransactionPolicy
      */
     public function update(User $user, Transaction $transaction): bool
     {
-        return false;
+        return $transaction->plan->owner_id === $user->id;
     }
 
     /**
@@ -47,7 +47,7 @@ class TransactionPolicy
      */
     public function delete(User $user, Transaction $transaction): bool
     {
-        return false;
+        return $transaction->plan->owner_id === $user->id;
     }
 
     /**
