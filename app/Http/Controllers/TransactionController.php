@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DeleteTransactionRequest;
 use App\Http\Requests\StoreTransactionRequest;
 use App\Http\Requests\UpdateTransactionRequest;
 use App\Models\Plan;
@@ -61,8 +62,9 @@ class TransactionController extends Controller
         return back()->with('success', 'Transaction updated successfully.');
     }
 
-    public function destroy(Transaction $transaction)
+    public function destroy(DeleteTransactionRequest $request, Transaction $transaction)
     {
-        return "Can delete Transaction number $transaction->id";
+        $transaction->delete();
+        return back()->with('success', 'Transaction deleted successfully.');
     }
 }
