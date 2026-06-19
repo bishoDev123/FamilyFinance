@@ -40,23 +40,41 @@
                class="block px-4 py-2 text-sm text-gray-700 focus:bg-gray-100 focus:text-gray-900 focus:outline-hidden">Share</a>
         </div>
         <div class="py-1">
-            <form action="{{ route("$modelName.destroy", $model) }}" method="POST">
-                @csrf
-                @method('DELETE')
 
-                @if($modelName == 'plan')
-                    <button type="submit"
-                            class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none cursor-pointer"
-                            onclick="return confirm('Are you sure you want to delete this?')">
+            @if($modelName == 'plans')
+                <form action="{{ route("$modelName.destroy", $model) }}" method="post">
+                    @csrf
+                    @method('DELETE')
+                    <button
+                        class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none cursor-pointer"
+                        onclick="return confirm('Are you sure you want to delete this?')">
                         Delete
                     </button>
-                @else
-                    {{--Make a normal delete button but make the button open a modal--}}
-                    {{--Make the modal be the confirmation, and add a checkbox--}}
-                    {{--Change the text of the modal depending on the type of transaction--}}
-                    {{--Use the value of the checkbox to do appropriate changes in the controller--}}
-                @endif
-            </form>
+                </form>
+            @else
+                <x-transaction.modal name="deleteModal">
+                    <form action="{{ route("$modelName.destroy", $model) }}" method="post">
+                        <input type="checkbox" id="confirmation" name="confirm">
+                        <label for="confirmation">
+                            @if($model->type == 'withdraw')
+                                Would you like to add the transaction amount to plan balance?
+                            @else
+                                Would you like to remove the transaction amount from plan balance?
+                            @endif
+                        </label>
+                    </form>
+                </x-transaction.modal>
+
+                {{--Make a normal delete button but make the button open a modal--}}
+                <button type="submit"
+                            class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none cursor-pointer"
+                            onclick="openModal('deleteModal')">
+                        Delete
+                </button>
+                {{--Make the modal be the confirmation, and add a checkbox--}}
+                {{--Change the text of the modal depending on the type of transaction--}}
+                {{--Use the value of the checkbox to do appropriate changes in the controller--}}
+            @endif
         </div>
     </el-menu>
 </el-dropdown>

@@ -1,5 +1,7 @@
+@props(['name' => 'transactionModal'])
+
 <div
-    id="transactionModal"
+    id="{{ $name }}"
     class="fixed inset-0 bg-black/50 flex justify-center items-center z-50
         opacity-0 pointer-events-none transition-opacity duration-300"
 >

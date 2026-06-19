@@ -29,7 +29,7 @@
                         @endif
                         @if(auth()->id() === $plan->owner_id)
                             <td class="px-6 py-4">
-                                <x-transaction.modal>
+                                <x-transaction.modal name="transactionModal">
                                     <x-transaction.form
                                         :action="route('transactions.update', $transaction)"
                                         method="PUT"

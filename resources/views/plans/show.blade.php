@@ -20,6 +20,7 @@
         <div class="flex justify-end gap-2">
 
             <button
+                type="button"
                 onclick="openModal('transactionModal')"
                 class="rounded-lg border border-orange-600 text-orange-600 px-3 py-1 font-bold hover:text-white hover:bg-orange-600 transition duration-200 cursor-pointer">
                 + Add Transaction
@@ -58,7 +59,7 @@
 
 
     {{-- TRANSACTION MODAL --}}
-    <x-transaction.modal>
+    <x-transaction.modal name="transactionModal">
         <x-transaction.form
             :action="route('plans.transactions.store', $plan)"
             button-text="Add"
