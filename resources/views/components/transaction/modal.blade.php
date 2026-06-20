@@ -6,7 +6,7 @@
         opacity-0 pointer-events-none transition-opacity duration-300"
 >
 
-    <div id='modalContent' class="bg-white shadow-md rounded px-8 pt-6 pb-8 relative w-full max-w-md
+    <div id='modalContent' class="bg-white shadow-md rounded px-8 pt-6 pb-8 relative w-full max-w-lg
         transform scale-95 transition-transform duration-300">
 
         {{-- Close button --}}

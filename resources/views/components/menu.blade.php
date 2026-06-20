@@ -5,14 +5,20 @@
 @endphp
 <x-transaction.modal name="deleteModal-{{ $model->id }}">
     <form action="{{ route("$modelName.destroy", $model) }}" method="post">
+        @csrf
+        @method('DELETE')
         <input type="checkbox" id="confirmation" name="confirm">
-        <label for="confirmation">
+        <label for="confirmation" class="text-sm select-none">
             @if($model->type == 'withdraw')
                 Would you like to add the transaction amount to plan balance?
             @else
                 Would you like to remove the transaction amount from plan balance?
             @endif
         </label>
+        <div class="flex justify-between mx-20">
+            <button type="submit" class="mt-5 bg-orange-500 font-bold text-white px-6 py-2 rounded-md hover:bg-orange-700">Yes</button>
+            <button type="button" class="mt-5 bg-gray-500 font-bold text-white px-6 py-2 rounded-md hover:bg-gray-700" onclick="closeModal('deleteModal-{{ $model->id }}')">No</button>
+        </div>
     </form>
 </x-transaction.modal>
     <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
