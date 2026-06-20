@@ -3,7 +3,18 @@
 @php
     $modelName = Str::plural(Str::snake(class_basename($model)));
 @endphp
-
+<x-transaction.modal name="deleteModal">
+    <form action="{{ route("$modelName.destroy", $model) }}" method="post">
+        <input type="checkbox" id="confirmation" name="confirm">
+        <label for="confirmation">
+            @if($model->type == 'withdraw')
+                Would you like to add the transaction amount to plan balance?
+            @else
+                Would you like to remove the transaction amount from plan balance?
+            @endif
+        </label>
+    </form>
+</x-transaction.modal>
     <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
 <!-- <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script> -->
 <el-dropdown class="inline-block">
@@ -52,18 +63,7 @@
                     </button>
                 </form>
             @else
-                <x-transaction.modal name="deleteModal">
-                    <form action="{{ route("$modelName.destroy", $model) }}" method="post">
-                        <input type="checkbox" id="confirmation" name="confirm">
-                        <label for="confirmation">
-                            @if($model->type == 'withdraw')
-                                Would you like to add the transaction amount to plan balance?
-                            @else
-                                Would you like to remove the transaction amount from plan balance?
-                            @endif
-                        </label>
-                    </form>
-                </x-transaction.modal>
+
 
                 {{--Make a normal delete button but make the button open a modal--}}
                 <button type="submit"

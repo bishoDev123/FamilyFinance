@@ -11,7 +11,7 @@
 
         {{-- Close button --}}
         <button
-            onclick="closeModal('transactionModal')"
+            onclick="closeModal('{{ $name }}')"
             class="absolute top-2 right-3 text-gray-500 hover:text-black text-xl cursor-pointer">
             ×
         </button>
