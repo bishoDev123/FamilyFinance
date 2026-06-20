@@ -64,8 +64,14 @@ class TransactionController extends Controller
 
     public function destroy(DeleteTransactionRequest $request, Transaction $transaction)
     {
-        dd($request->getPayload());
-        $transaction->delete();
+        $confirmed = $request->boolean('confirm');
+        if ($confirmed) {
+            $transaction->plan->decrement('budget', $transaction->amount);
+            $transaction->delete();
+        }
+        else {
+            $transaction->delete();
+        }
         return back()->with('success', 'Transaction deleted successfully.');
     }
 }
