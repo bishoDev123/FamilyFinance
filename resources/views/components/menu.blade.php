@@ -3,7 +3,7 @@
 @php
     $modelName = Str::plural(Str::snake(class_basename($model)));
 @endphp
-<x-transaction.modal name="deleteModal">
+<x-transaction.modal name="deleteModal-{{ $model->id }}">
     <form action="{{ route("$modelName.destroy", $model) }}" method="post">
         <input type="checkbox" id="confirmation" name="confirm">
         <label for="confirmation">
@@ -68,7 +68,7 @@
                 {{--Make a normal delete button but make the button open a modal--}}
                 <button type="submit"
                             class="block w-full text-left px-4 py-2 text-sm text-red-500 focus:bg-gray-100 focus:outline-none cursor-pointer"
-                            onclick="openModal('deleteModal')">
+                            onclick="openModal('deleteModal-{{ $model->id }}')">
                         Delete
                 </button>
                 {{--Make the modal be the confirmation, and add a checkbox--}}
